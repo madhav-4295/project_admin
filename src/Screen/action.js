@@ -10,7 +10,7 @@ import axios from "axios";
 
 //Fetching studentList
 export const getStudentList = () => {
-  console.log("in action, getstudentlist");
+//   console.log("in action, getstudentlist");
   return (dispatch) => {
     try {
       axios({
@@ -18,7 +18,7 @@ export const getStudentList = () => {
         url: "http://localhost:5000/studentList",
       })
         .then((response) => {
-          console.log(response, "axios action");
+        //   console.log(response, "axios action");
 
           dispatch({
             type: STUDENT_LIST,
@@ -35,7 +35,7 @@ export const getStudentList = () => {
 };
 // Fetching Course List
 export const getCourseList = () => {
-  console.log("in action, getcourselist");
+//   console.log("in action, getcourselist");
   return (dispatch) => {
     try {
       axios({
@@ -43,7 +43,7 @@ export const getCourseList = () => {
         url: "http://localhost:5000/courseList",
       })
         .then((response) => {
-          console.log(response, "axios action");
+        //   console.log(response, "axios action");
 
           dispatch({
             type: COURSE_LIST,
@@ -62,7 +62,7 @@ export const getCourseList = () => {
 //Updating Array of subjects of a student
 
 export const updateSubject = (id, data) => {
-  console.log("update-->", data);
+//   console.log("update-->", data);
   return (dispatch) => {
     try {
       axios({
@@ -71,7 +71,7 @@ export const updateSubject = (id, data) => {
         data: data,
       })
         .then((response) => {
-          console.log(response, "axios action");
+        //   console.log(response, "axios action");
           dispatch(setErrorMessage("Subject added successfully."));
 
           dispatch({
