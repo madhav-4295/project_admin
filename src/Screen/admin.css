@@ -4,10 +4,14 @@
 }
 .box{
     margin: auto;
-    min-height: 400px;
-    width: 60%;
+    min-height: 600px;
+    /* max-height: fit-content; */
+    width: 80%;
     border: 2px solid #78BCC4;
-    background-color: #78BCC4;
+    /* background-color: #78BCC4; */
+}
+.container{
+    min-height: auto;
 }
 .event-list{
     padding: 5px;

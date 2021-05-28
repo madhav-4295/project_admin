@@ -1,7 +1,9 @@
 export const studentStyle={
     marginTop:"2px",
     marginBottom:"2px",
-    backgroundColor:"#F7444E",
+    // backgroundColor:"#F7444E",
+    background: "linear-gradient(165deg, #00E3FF 10%, #006572 100%, #0E4B64 100%)",
+
     fontSize: "15px",
     padding:" 4px 0px 2px 0px",
     width:"90%",
@@ -11,20 +13,25 @@ export const studentStyle={
 export const eventCodeStyle={
     textAlign:"left",
     height: "auto",
-    width:"150px",
+    width:"120px",
     margin:"auto",
-    // overflowY:"scroll",
-    border: "1px solid rgb(185,184,184)",
+    //  overflowY:"scroll",
+     border: "1px solid rgb(185,184,184)",
+     borderRadius:"4px solid",
     // backgroundColor:"whtite",
-    padding:"0px",
+    // padding:"0px",
     display:"block",
-    cursor:"pointer"
+    cursor:"pointer",
+    // background: "linear-gradient(165deg, #00E3FF 10%, #006572 100%, #0E4B64 100%)",
+    background: "#e9fdff",
+    boxShadow: "5px,10px"
 
 }
 export const studentNameHeader={
     marginTop:"2px",
     marginBottom:"2px",
-    backgroundColor:"#F7444E",
+    // backgroundColor:"#F7444E",
+    background: "linear-gradient(165deg, #00E3FF 10%, #006572 100%, #0E4B64 100%)",
     borderRadius: "2px solid black",
     padding:"4px 0px 2px 0px",
     color:"#041E42",
@@ -41,11 +48,13 @@ export const studentNameText={
 export const CourseStyle={
     marginTop:"10px",
     marginBottom:"10px",
-    backgroundColor:"#F7444E",
+    // backgroundColor:"#F7444E",
     padding:"4px 0px 2px 0px",
     color:"#041E42",
     fontSize:"15px",
-    width:"95%"
+    width:"95%",
+    background: "linear-gradient(165deg, #00E3FF 10%, #006572 100%, #0E4B64 100%)",
+
 }
 
 export const inputStyle={
@@ -55,24 +64,27 @@ export const inputStyle={
     // marginTop:"5px",
     // border:"none",
     // borderRadius: "4px"
-    height:25,
-    width:"16%",
-    backgroundColor: "#ffffff",
+    height:"auto",
+    width:"auto",
+    // backgroundColor: "#ffffff",
     margin:"6px",
-    border: "0.5px, solid",
+    // border: "0.5px, solid",
     borderRadius:"6px",
 
 
 }
 export const buttonStyle={
-    backgroundColor:"#F7444E",
-    height:25,
-    color: "black",
-    border: "none",
-    borderRadius:"8px",
+    // backgroundColor:"#F7444E",
+     height:"auto",
+    // color: "black",
+    // border: "none",
+    // borderRadius:"8px",
     marginLeft: "10px",
     marginTop:"6px",
-    color: "#041e42",
-     width: "20%"
+     color: "#041e42",
+     width: "auto",
+    //  fontSize:"15px",
+     background: "linear-gradient(90deg, #00E3FF 10%, #006572 100%, #0E4B64 100%)",
+
      
 }

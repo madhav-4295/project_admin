@@ -17,7 +17,7 @@ const initial_state = {
 };
 
 const adminReducer = (state = initial_state, action) => {
-  console.log("redux-file", action.payload);
+//   console.log("redux-file", action.payload);
   switch (action.type) {
     case STUDENT_LIST:
       return {

@@ -88,6 +88,8 @@ const Admin = () => {
     //  setActiveId(evt.id);
     dispatch(setActiveId(evt.id));
     dispatch(setErrorMessage(""))
+    dispatch(setInputSubject("null"));
+
 
     dispatch(setDisplayFlag(evt.id === data[evt.id].id ? true : false));
     //setDisplayFlag(activeId !== null)

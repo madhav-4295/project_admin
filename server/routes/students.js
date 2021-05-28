@@ -7,9 +7,7 @@ let studentList={
             "id":"1",
             "name":"madhav",
             "course":["English", "Maths"
-                // {"id":1, "value":"English"},
-                // {"id":2, "value":"Maths"}
-
+                
 
             ] 
         }
@@ -18,9 +16,45 @@ let studentList={
             "id":"12",
             "name":"ragh",
             "course":["English", "Maths"
-                // {"id":1, "value":"English"},
-                // {"id":2, "value":"Maths"}
-
+                
+            ]        
+        },
+        "13":{
+            "id":"13",
+            "name":"ram",
+            "course":["English", "Maths"
+                
+            ]        
+        },"14":{
+            "id":"14",
+            "name":"Ajay",
+            "course":["English", "Maths"
+                
+            ]        
+        },"23":{
+            "id":"23",
+            "name":"Akshat",
+            "course":["English", "Maths"
+                
+            ]        
+        },"21":{
+            "id":"21",
+            "name":"Vivek",
+            "course":["English", "Maths"
+                
+            ]        
+        },"32":{
+            "id":"32",
+            "name":"Yasir",
+            "course":["English", "Maths"
+                
+            ]        
+        },
+        "09":{
+            "id":"09",
+            "name":"Kunal",
+            "course":["English", "Maths"
+                
             ]        
         },
 }

@@ -1,5 +1,7 @@
 import React from "react";
 // import "./CommonList.css"
+import Select from "@material-ui/core/Select";
+import MenuItem from "@material-ui/core/MenuItem";
 
 const CommonSelect = ({
   options,
@@ -11,19 +13,25 @@ const CommonSelect = ({
 }) => {
   return (
     <>
-      <select value={selectedData} onChange={changeHandler} style={customStyle}>
-        <option value="null" disabled>
+      <Select
+        value={selectedData}
+        onChange={changeHandler}
+        labelId="demo-simple-select-filled-label"
+        id="demo-simple-select-filled"
+        style={customStyle}
+      >
+        <MenuItem value="null" disabled>
           Select
-        </option>
+        </MenuItem>
         {options.map((i) => {
           // {console.log(i)}
           return (
-            <option key={i.id} value={i.value}>
+            <MenuItem key={i.id} value={i.value}>
               {i.value}
-            </option>
+            </MenuItem>
           );
         })}
-      </select>
+      </Select>
     </>
   );
 };
