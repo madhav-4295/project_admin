@@ -1,4 +1,3 @@
-import { act } from "react-dom/test-utils";
 import {
   STUDENT_LIST,
   COURSE_LIST,
@@ -7,24 +6,22 @@ import {
   SUBJECT,
   ACTIVEID,
   DISPLAYFLAG,
-  CURRENT_PAGE
+  CURRENT_PAGE,
 } from "../../src/Redux/ActionTypes";
 
 const initial_state = {
   data: {},
   courseOptions: [],
   error_message: "",
-  success_message:"",
+  success_message: "",
   subject: "",
   activeId: 0,
   displayFlag: false,
-  studentPerPage:2,
-  currentPage:1
-  
+  studentPerPage: 2,
+  currentPage: 1,
 };
 
 const adminReducer = (state = initial_state, action) => {
-//   console.log("redux-file", action.payload);
   switch (action.type) {
     case STUDENT_LIST:
       return {
@@ -41,7 +38,7 @@ const adminReducer = (state = initial_state, action) => {
         ...state,
         error_message: action.payload,
       };
-      case SUCCESS_MESSAGE:
+    case SUCCESS_MESSAGE:
       return {
         ...state,
         success_message: action.payload,
@@ -63,10 +60,10 @@ const adminReducer = (state = initial_state, action) => {
       };
 
     case CURRENT_PAGE:
-      return{
+      return {
         ...state,
-        currentPage: action.payload
-      }
+        currentPage: action.payload,
+      };
 
     default:
       return {

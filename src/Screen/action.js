@@ -6,13 +6,12 @@ import {
   SUBJECT,
   ACTIVEID,
   DISPLAYFLAG,
-  CURRENT_PAGE
+  CURRENT_PAGE,
 } from "../../src/Redux/ActionTypes";
 import axios from "axios";
 
 //Fetching studentList
 export const getStudentList = () => {
-//   console.log("in action, getstudentlist");
   return (dispatch) => {
     try {
       axios({
@@ -20,8 +19,6 @@ export const getStudentList = () => {
         url: "http://localhost:5000/studentList",
       })
         .then((response) => {
-        //   console.log(response, "axios action");
-
           dispatch({
             type: STUDENT_LIST,
             payload: response.data,
@@ -37,7 +34,6 @@ export const getStudentList = () => {
 };
 // Fetching Course List
 export const getCourseList = () => {
-//   console.log("in action, getcourselist");
   return (dispatch) => {
     try {
       axios({
@@ -45,8 +41,6 @@ export const getCourseList = () => {
         url: "http://localhost:5000/courseList",
       })
         .then((response) => {
-        //   console.log(response, "axios action");
-
           dispatch({
             type: COURSE_LIST,
             payload: response.data.courseList,
@@ -61,10 +55,9 @@ export const getCourseList = () => {
   };
 };
 
-//Updating Array of subjects of a student
+//Updating list of subjects of a student
 
 export const updateSubject = (id, data) => {
-//   console.log("update-->", data);
   return (dispatch) => {
     try {
       axios({
@@ -73,10 +66,8 @@ export const updateSubject = (id, data) => {
         data: data,
       })
         .then((response) => {
-        //   console.log(response, "axios action");
           dispatch(setSuccessMessage("Subject added successfully."));
           dispatch(setErrorMessage(""));
-
 
           dispatch({
             type: STUDENT_LIST,
@@ -111,6 +102,7 @@ export const setSuccessMessage = (text) => {
     });
   };
 };
+
 // Setting Input Subject
 
 export const setInputSubject = (text) => {
@@ -121,6 +113,8 @@ export const setInputSubject = (text) => {
     });
   };
 };
+
+//Setting Active ID
 export const setActiveId = (value) => {
   return (dispatch) => {
     dispatch({
@@ -129,6 +123,8 @@ export const setActiveId = (value) => {
     });
   };
 };
+
+//Setting Display flag
 export const setDisplayFlag = (value) => {
   return (dispatch) => {
     dispatch({
@@ -140,7 +136,7 @@ export const setDisplayFlag = (value) => {
 
 // Setting page number for pagination
 
-export const setCurrentPage= (value) => {
+export const setCurrentPage = (value) => {
   return (dispatch) => {
     dispatch({
       type: CURRENT_PAGE,
@@ -148,4 +144,3 @@ export const setCurrentPage= (value) => {
     });
   };
 };
-
