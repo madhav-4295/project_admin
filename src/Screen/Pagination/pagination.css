@@ -1,0 +1,10 @@
+.page-list{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+     margin-left: -10px; 
+     /* flex-direction: row;  */
+     list-style: none;
+     
+     
+}

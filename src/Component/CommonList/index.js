@@ -19,7 +19,7 @@ const CommonList =({
         <>  
         
         {options.map(i=>{
-                // console.log(i)
+                 console.log(i)
                 if(id==="studentList"){
                     return(
                         // <ol style={customStyle} > 

@@ -5,7 +5,7 @@ const router = express.Router()
 let studentList={
         "1":{
             "id":"1",
-            "name":"madhav",
+            "name":"Madhav",
             "course":["English", "Maths"
                 
 
@@ -14,46 +14,46 @@ let studentList={
         ,
         "12":{
             "id":"12",
-            "name":"ragh",
-            "course":["English", "Maths"
+            "name":"Anish",
+            "course":["English", "Maths", "Science"
                 
             ]        
         },
         "13":{
             "id":"13",
-            "name":"ram",
-            "course":["English", "Maths"
+            "name":"Ram",
+            "course":["English", "German"
                 
             ]        
         },"14":{
             "id":"14",
             "name":"Ajay",
-            "course":["English", "Maths"
+            "course":["Spanish", "Maths"
                 
             ]        
         },"23":{
             "id":"23",
             "name":"Akshat",
-            "course":["English", "Maths"
+            "course":["Spanish", "German"
                 
             ]        
         },"21":{
             "id":"21",
             "name":"Vivek",
-            "course":["English", "Maths"
+            "course":["English", "German"
                 
             ]        
         },"32":{
             "id":"32",
             "name":"Yasir",
-            "course":["English", "Maths"
+            "course":["Science", "German", "Maths"
                 
             ]        
         },
         "09":{
             "id":"09",
             "name":"Kunal",
-            "course":["English", "Maths"
+            "course":["Spanish", "Science", "English"
                 
             ]        
         },
@@ -86,7 +86,7 @@ router.put('/:id',(req,res)=>{
 //     else return user
     
 // })
-console.log(studentList.studentList,"new studentlist")
+// console.log(studentList.studentList,"new studentlist")
 res.status(200).send(studentList)
 
     // res.status(404).send("something went wrong")

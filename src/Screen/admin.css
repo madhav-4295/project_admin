@@ -29,6 +29,14 @@
     /* flex-direction: row; */
     display: block;
 }
+.page-list{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* margin-left: -10px; */
+     flex-direction: row; 
+     
+}
 .displayblock2{
     display: flex;
     justify-content: center;
@@ -51,12 +59,12 @@
     .event-list{
         padding: 10px;
         width: 100%;
-        margin-right: auto;
+        margin: auto;
     }
     .event-details{
         padding: 10px;
         width: 100%;
-        margin-right: auto;
+        margin: auto;
     }
     .displayblock2{
         flex-direction: column;

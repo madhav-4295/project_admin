@@ -59,15 +59,16 @@ export const CourseStyle={
 
 export const inputStyle={
     //  height:"6",
-    // width:"30%",
-    // marginLeft: "90px",
-    // marginTop:"5px",
-    // border:"none",
+    width:"30%",
+    marginLeft: "140px",
+    marginTop:"5px",
+    marginBottom:"5px",
+    border:"none",
     // borderRadius: "4px"
     height:"auto",
-    width:"auto",
+    // width:"auto",
     // backgroundColor: "#ffffff",
-    margin:"6px",
+    // margin:"auto",
     // border: "0.5px, solid",
     borderRadius:"6px",
 
@@ -75,14 +76,16 @@ export const inputStyle={
 }
 export const buttonStyle={
     // backgroundColor:"#F7444E",
-     height:"auto",
+     height:"40px",
     // color: "black",
     // border: "none",
     // borderRadius:"8px",
-    marginLeft: "10px",
-    marginTop:"6px",
+    // marginLeft: "auto",
+    // marginTop:"auto",
+    margin:"auto",
      color: "#041e42",
-     width: "auto",
+     width: "90px",
+    //  padding:"2px 2px 2px 2px",
     //  fontSize:"15px",
      background: "linear-gradient(90deg, #00E3FF 10%, #006572 100%, #0E4B64 100%)",
 

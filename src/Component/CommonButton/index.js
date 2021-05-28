@@ -9,7 +9,9 @@ const CommonButton =({
     return(
         <>
         {/* <button onClick={AddSubject} style={customStyle}> {title}</button> */}
-        <Button onClick={AddSubject} variant="contained" color="primary" size="small" style={customStyle} className="button">{title}</Button>
+        <Button onClick={AddSubject} variant="contained" color="primary" size="small" style={customStyle} 
+        // className="button"
+        >{title}</Button>
         </>
     )
 }

@@ -5,6 +5,7 @@
   "proxy": "http://localhost:5000",
   "dependencies": {
     "@material-ui/core": "^4.11.4",
+    "@material-ui/lab": "^4.0.0-alpha.58",
     "@testing-library/jest-dom": "^5.12.0",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
@@ -26,6 +27,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "client": "cd server && npm run dev",
+    "client1": "cd server && npm install",
+    "go": "concurrently \"npm run client1 \" \"npm install\" ",
     "dev": "concurrently \"npm run client \" \"npm run react\" "
   },
   "eslintConfig": {

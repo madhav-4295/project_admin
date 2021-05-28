@@ -1,20 +1,22 @@
-import React, {useEffect } from "react";
-// import { StudentList } from "../CommonData/dummyData";
+import React, { useEffect, useState } from "react";
 import CommonList from "../Component/CommonList";
 import CommonHeader from "../Component/CommonHeader";
 import CommonButton from "../Component/CommonButton/index";
-// import CommonInput from "../Component/CommonInput/index";
 import CommonSelect from "../Component/CommonSelect/index";
+import Pagination from "./Pagination/index";
 import { useSelector, useDispatch } from "react-redux";
 import PropTypes from "prop-types";
+import Alert from "@material-ui/lab/Alert";
 import {
   getStudentList,
   getCourseList,
   updateSubject,
   setErrorMessage,
+  setSuccessMessage,
   setInputSubject,
   setActiveId,
   setDisplayFlag,
+  setCurrentPage,
 } from "./action";
 // import axios from "axios";
 import "./admin.css";
@@ -26,7 +28,6 @@ import {
   buttonStyle,
   inputStyle,
 } from "../styles/index";
-// import adminReducer from "./reducer";
 
 const Admin = () => {
   // const [courseOptions, setCourseOption] = useState([]);
@@ -36,21 +37,29 @@ const Admin = () => {
   //  const [activeId, setActiveId] = useState(null);
   // const [errorMessage, setErrorMessage] = useState("");
   // console.log(courses)
+  // const [studentPerPage] = useState(2);
+  // const [currentPage, setCurrentPage]=useState(1)
   const dispatch = useDispatch();
   const {
     data,
     courseOptions,
     error_message,
+    success_message,
     subject,
     activeId,
     displayFlag,
+    studentPerPage,
+    currentPage,
   } = useSelector((state) => ({
     data: state.adminReducer.data,
     courseOptions: state.adminReducer.courseList,
     error_message: state.adminReducer.error_message,
+    success_message: state.adminReducer.success_message,
     subject: state.adminReducer.subject,
     activeId: state.adminReducer.activeId,
     displayFlag: state.adminReducer.displayFlag,
+    studentPerPage: state.adminReducer.studentPerPage,
+    currentPage: state.adminReducer.currentPage,
   }));
 
   // const getData = () => {
@@ -87,9 +96,10 @@ const Admin = () => {
 
     //  setActiveId(evt.id);
     dispatch(setActiveId(evt.id));
-    dispatch(setErrorMessage(""))
-    dispatch(setInputSubject("null"));
+    dispatch(setErrorMessage(""));
+    dispatch(setSuccessMessage(""));
 
+    dispatch(setInputSubject("null"));
 
     dispatch(setDisplayFlag(evt.id === data[evt.id].id ? true : false));
     //setDisplayFlag(activeId !== null)
@@ -103,10 +113,12 @@ const Admin = () => {
     });
 
     // Checking if subject has empty value
-    // if(subject=="null"){
-    //     setErrorMessage("Kindly choose a subject")
-    //     return
-    // }
+    if (subject == "null") {
+      dispatch(setErrorMessage("Please select a subject."));
+      dispatch(setSuccessMessage(""));
+
+      return;
+    }
     if (!find) {
       const data_1 = {
         ...data[activeId],
@@ -136,11 +148,28 @@ const Admin = () => {
       //   "Subject already exist. Choose another subject"
       // );
       dispatch(setErrorMessage("Subject already exists."));
+      dispatch(setSuccessMessage(""));
+
     }
   };
   const handleChange = (e) => {
     dispatch(setInputSubject(e.target.value));
     console.log(e.target.value);
+  };
+
+  //pagination
+  const data1 = Object.values(data);
+  const indexofLastStudent = currentPage * studentPerPage;
+  const indexOfFirstStudent = indexofLastStudent - studentPerPage;
+  const currentStudent = data1.slice(indexOfFirstStudent, indexofLastStudent);
+  console.log(currentStudent);
+
+  const paginate = (number) => {
+    // setCurrentPage(number)
+    dispatch(setCurrentPage(number));
+    dispatch(setErrorMessage(""));
+    dispatch(setInputSubject("null"));
+    dispatch(setDisplayFlag(false));
   };
   return (
     <div className="box">
@@ -149,14 +178,23 @@ const Admin = () => {
           <CommonHeader text="Students List" customStyle={studentStyle} />
           <div className="evt-list">
             <CommonList
-              options={Object.values(data)}
+              // options={Object.values(data)}
+              options={currentStudent}
               fillData={fillData}
               id="studentList"
               customStyle={eventCodeStyle}
               size={17}
             />
+            <Pagination
+              studentPerPage={studentPerPage}
+              totalPost={data1.length}
+              paginate={paginate}
+            />
           </div>
+          <div className="page-list"></div>
         </div>
+        <div className="page-list"></div>
+
         {/* 1. if displayFLag is True component is rendered else nothing is rendered.
          */}
         {displayFlag == !true ? null : (
@@ -181,14 +219,23 @@ const Admin = () => {
               />
 
               <CommonButton
-                title={"Add Subjects"}
+                title={"Add Subject"}
                 customStyle={buttonStyle}
                 AddSubject={AddSubject}
               />
+              
             </div>
+            <div>
+          {error_message ? (
+            <Alert severity="error">{error_message}</Alert>
+          ) : null}
+          {success_message?(
+            <Alert severity="success">{success_message}</Alert>
+          ):null}
+        </div>
           </div>
         )}
-        <div>{error_message}</div>
+        
       </div>
     </div>
   );
