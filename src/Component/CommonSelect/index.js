@@ -6,9 +6,8 @@ const CommonSelect = ({
   options,
   changeHandler,
   selectedData,
-  id,
+
   customStyle,
-  size,
 }) => {
   return (
     <>
@@ -23,7 +22,6 @@ const CommonSelect = ({
           Select
         </MenuItem>
         {options.map((i) => {
-          // {console.log(i)}
           return (
             <MenuItem key={i.id} value={i.value}>
               {i.value}

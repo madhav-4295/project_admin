@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import CommonList from "../Component/CommonList";
 import CommonHeader from "../Component/CommonHeader";
 import CommonButton from "../Component/CommonButton/index";
@@ -18,7 +18,6 @@ import {
   setDisplayFlag,
   setCurrentPage,
 } from "./action";
-// import axios from "axios";
 import "./admin.css";
 import {
   studentStyle,
@@ -30,15 +29,6 @@ import {
 } from "../styles/index";
 
 const Admin = () => {
-  // const [courseOptions, setCourseOption] = useState([]);
-  // const [data, setData] = useState({});
-  // const [displayDetailsFlag, setDisplayFlag] = useState(false);
-  // const [subject, setSubject] = useState("");
-  //  const [activeId, setActiveId] = useState(null);
-  // const [errorMessage, setErrorMessage] = useState("");
-  // console.log(courses)
-  // const [studentPerPage] = useState(2);
-  // const [currentPage, setCurrentPage]=useState(1)
   const dispatch = useDispatch();
   const {
     data,
@@ -62,49 +52,21 @@ const Admin = () => {
     currentPage: state.adminReducer.currentPage,
   }));
 
-  // const getData = () => {
-  //   //redux
-  //   //Fetching Student List from backend
-  //   axios
-  //     .get("http://localhost:5000/studentList")
-  //     .then((res) => {
-  //       // console.log(res.data.studentList,"axios")
-  //       setData(res.data)
-  //     })
-  //     .catch((err) => console.log(err));
-
-  //   //Fetching Course List from backend
-  //   axios
-  //     .get("http://localhost:5000/courseList")
-  //     .then((res) => {
-  //       // console.log("courseList-->",res.data.courseList)
-  //       setCourseOption(res.data.courseList);
-  //     })
-  //     .catch((err) => console.log(err));
-  // };
   useEffect(() => {
     dispatch(getStudentList());
     dispatch(getCourseList());
-    // setSubject("null")
     dispatch(setInputSubject("null"));
   }, []);
 
   const fillData = (evt) => {
-    console.log("filldata", evt);
-    // setStudentName(evt.name);
-    // setCourses(evt.course);
-
-    //  setActiveId(evt.id);
     dispatch(setActiveId(evt.id));
     dispatch(setErrorMessage(""));
     dispatch(setSuccessMessage(""));
-
     dispatch(setInputSubject("null"));
-
     dispatch(setDisplayFlag(evt.id === data[evt.id].id ? true : false));
-    //setDisplayFlag(activeId !== null)
   };
 
+  //Adding a new subject for the student
   const AddSubject = () => {
     //validating if subject chosen by admin already exist in courselist of student
 
@@ -112,7 +74,7 @@ const Admin = () => {
       return item.toLowerCase() === subject.toLowerCase();
     });
 
-    // Checking if subject has empty value
+    // Validating if subject has empty value
     if (subject == "null") {
       dispatch(setErrorMessage("Please select a subject."));
       dispatch(setSuccessMessage(""));
@@ -125,36 +87,17 @@ const Admin = () => {
         course: [...data[activeId].course, subject],
       };
       dispatch(updateSubject(activeId, data_1));
-      // setSubject("null")
       dispatch(setInputSubject("null"));
 
-      // axios.put(`http://localhost:5000/studentList/${ActiveId}`, {
-      //   ... data[ActiveId],
-      //     course: [...data[ActiveId].course, subject],
-      //   })
-      //   .then((res) => {
-      //     console.log(res.status);
-      //     if (res.status === 200) {
-      //       // console.log(res.status,"updated successfully")
-      //       setErrorMessage("");
-      //       // window.location.reload();
-      //       //  setData(res.data)
-      //       // getData()
-      //     }
-      //   })
-      //   .catch((err) => console.log(err));
-    } else {
-      // setErrorMessage(
-      //   "Subject already exist. Choose another subject"
-      // );
+    }else{
       dispatch(setErrorMessage("Subject already exists."));
       dispatch(setSuccessMessage(""));
-
+  
     }
+
   };
   const handleChange = (e) => {
     dispatch(setInputSubject(e.target.value));
-    console.log(e.target.value);
   };
 
   //pagination
@@ -162,10 +105,8 @@ const Admin = () => {
   const indexofLastStudent = currentPage * studentPerPage;
   const indexOfFirstStudent = indexofLastStudent - studentPerPage;
   const currentStudent = data1.slice(indexOfFirstStudent, indexofLastStudent);
-  console.log(currentStudent);
 
   const paginate = (number) => {
-    // setCurrentPage(number)
     dispatch(setCurrentPage(number));
     dispatch(setErrorMessage(""));
     dispatch(setInputSubject("null"));
@@ -178,12 +119,10 @@ const Admin = () => {
           <CommonHeader text="Students List" customStyle={studentStyle} />
           <div className="evt-list">
             <CommonList
-              // options={Object.values(data)}
               options={currentStudent}
               fillData={fillData}
               id="studentList"
               customStyle={eventCodeStyle}
-              size={17}
             />
             <Pagination
               studentPerPage={studentPerPage}
@@ -195,7 +134,7 @@ const Admin = () => {
         </div>
         <div className="page-list"></div>
 
-        {/* 1. if displayFLag is True component is rendered else nothing is rendered.
+        {/* if displayFLag is True component is rendered else nothing is rendered.
          */}
         {displayFlag == !true ? null : (
           <div className="event-details">
@@ -223,19 +162,18 @@ const Admin = () => {
                 customStyle={buttonStyle}
                 AddSubject={AddSubject}
               />
-              
             </div>
             <div>
-          {error_message ? (
-            <Alert severity="error">{error_message}</Alert>
-          ) : null}
-          {success_message?(
-            <Alert severity="success">{success_message}</Alert>
-          ):null}
-        </div>
+              {/* Displaying success or error message */}
+              {error_message ? (
+                <Alert severity="error">{error_message}</Alert>
+              ) : null}
+              {success_message ? (
+                <Alert severity="success">{success_message}</Alert>
+              ) : null}
+            </div>
           </div>
         )}
-        
       </div>
     </div>
   );
